@@ -24,18 +24,12 @@ $ npm install @prohetamine/proxy-checker
 $ yarn add @prohetamine/proxy-checker
 ```
 
-или
-
-```sh
-$ yarn add https://github.com/prohetamine/proxy-checker
-```
-
 ### Примеры и описание
 
 Подключение модуля
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 ```
 
 #### <a name="load">load</a>
@@ -48,7 +42,7 @@ const proxy = require('proxy-checker')
 | debug | boolean | false | нет | используется для отладки |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -79,7 +73,7 @@ const proxy = require('proxy-checker')
 | debug | boolean | false | нет | используется для отладки |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const kill = await proxy.loadInterval(count => {
@@ -107,7 +101,7 @@ const proxy = require('proxy-checker')
 | port | number | false | нет | используется для фильтра портов |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -127,7 +121,7 @@ const proxy = require('proxy-checker')
 | port | number | false | нет | используется для фильтра портов |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -168,7 +162,7 @@ const proxy = require('proxy-checker')
 | selector | string | нет | да | используется для поиска на странице по дом ноде |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -203,7 +197,7 @@ const proxy = require('proxy-checker')
 ```
 
 ```
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -256,7 +250,7 @@ const proxy = require('proxy-checker')
 | port | number | false | нет | используется для фильтра портов |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -307,7 +301,7 @@ const proxy = require('proxy-checker')
 | port | number | false | нет | используется для фильтра портов |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -365,16 +359,10 @@ Install the npm module  ```proxy-checker```
 $ npm install @prohetamine/proxy-checker
 ```
 
-или
+or
 
 ```sh
 $ yarn add @prohetamine/proxy-checker
-```
-
-или
-
-```sh
-$ yarn add https://github.com/prohetamine/proxy-checker
 ```
 
 ### Examples and description
@@ -382,7 +370,7 @@ $ yarn add https://github.com/prohetamine/proxy-checker
 Connecting the module
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 ```
 
 #### <a name="load">load</a>
@@ -395,7 +383,7 @@ The [load](#load) function collects proxies and easily returns them via [all](#a
 | debug | boolean | false | none | used for debugging |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -426,7 +414,7 @@ The [load](#loadInterval) function collects proxies with an interval of _N milli
 | debug | boolean | false | none | used for debugging |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const kill = await proxy.loadInterval(count => {
@@ -454,7 +442,7 @@ The [all](#all) function returns an array of IP addresses when it is loaded [loa
 | port | number | false | none | used for the port filter |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -474,7 +462,7 @@ The [random](#random) function returns a single random IP address when it is loa
 | port | number | false | none | used for the port filter |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   const count = await proxy.load({
@@ -515,7 +503,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | selector | string | no | yes | used for searching on a page by dom node |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -550,7 +538,7 @@ const proxy = require('proxy-checker')
 ```
 
 ```
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -603,7 +591,7 @@ The [get.all](#getall) function returns an array of checked [checkerInterval](#c
 | port | number | false | none | used for the port filter |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -654,7 +642,7 @@ The function [get.random](#getrandom) returns one random of the checked [checker
 | port | number | false | none | used for the port filter |
 
 ```sh
-const proxy = require('proxy-checker')
+const proxy = require('@prohetamine/proxy-checker')
 
 ;(async () => {
   await proxy.loadInterval(count => {
