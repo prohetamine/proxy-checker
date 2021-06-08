@@ -197,6 +197,8 @@ const proxy = require('proxy-checker')
 ```
 
 ```
+const proxy = require('proxy-checker')
+
 ;(async () => {
   await proxy.loadInterval(count => {
     console.log(`count parse: ${count}`) // Количество собранных прокси с портом
@@ -536,6 +538,8 @@ const proxy = require('proxy-checker')
 ```
 
 ```
+const proxy = require('proxy-checker')
+
 ;(async () => {
   await proxy.loadInterval(count => {
     console.log(`count parse: ${count}`) // The number of proxies collected with the port
