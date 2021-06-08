@@ -339,8 +339,6 @@ const proxy = require('proxy-checker')
 
 -------- FOR WORLD --------
 
-![enter image description here](/media/logo.png)
-
 ##### lang: [ru](#rulang) [en](#enlang)
 
 
