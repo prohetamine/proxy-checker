@@ -1,5 +1,5 @@
 {
-  "name": "proxy-checker",
+  "name": "@prohetamine/proxy-checker",
   "version": "1.0.0",
   "description": "Proxy parser & proxy checker",
   "main": "index.js",

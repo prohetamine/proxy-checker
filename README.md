@@ -15,13 +15,13 @@
 Установим npm модуль  ```proxy-checker```
 
 ```sh
-$ npm install proxy-checker
+$ npm install @prohetamine/proxy-checker
 ```
 
 или
 
 ```sh
-$ yarn add proxy-checker
+$ yarn add @prohetamine/proxy-checker
 ```
 
 ### Примеры и описание
@@ -356,13 +356,13 @@ I, and therefore many people, need to [get](#load) a proxy to bypass the ban on 
 Install the npm module  ```proxy-checker```
 
 ```sh
-$ npm install proxy-checker
+$ npm install @prohetamine/proxy-checker
 ```
 
 or
 
 ```sh
-$ yarn add proxy-checker
+$ yarn add @prohetamine/proxy-checker
 ```
 
 ### Examples and description
