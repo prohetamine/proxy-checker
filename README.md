@@ -24,6 +24,12 @@ $ npm install @prohetamine/proxy-checker
 $ yarn add @prohetamine/proxy-checker
 ```
 
+или
+
+```sh
+$ yarn add https://github.com/prohetamine/proxy-checker
+```
+
 ### Примеры и описание
 
 Подключение модуля
@@ -359,10 +365,16 @@ Install the npm module  ```proxy-checker```
 $ npm install @prohetamine/proxy-checker
 ```
 
-or
+или
 
 ```sh
 $ yarn add @prohetamine/proxy-checker
+```
+
+или
+
+```sh
+$ yarn add https://github.com/prohetamine/proxy-checker
 ```
 
 ### Examples and description
