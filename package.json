@@ -1,0 +1,39 @@
+{
+  "name": "proxy-checker",
+  "version": "1.0.0",
+  "description": "Proxy parser & proxy checker",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prohetamine/proxy-checker.git"
+  },
+  "keywords": [
+    "proxy",
+    "checker",
+    "proxy",
+    "checker",
+    "proxinage"
+  ],
+  "author": "Stas Prohetamine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prohetamine/proxy-checker/issues"
+  },
+  "homepage": "https://github.com/prohetamine/proxy-checker#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.1",
+    "puppeteer": "^10.0.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "sleep-promise": "^9.1.0"
+  }
+}
