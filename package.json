@@ -1,6 +1,6 @@
 {
   "name": "@prohetamine/proxy-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Proxy parser & proxy checker",
   "main": "index.js",
   "directories": {
