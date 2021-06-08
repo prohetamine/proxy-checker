@@ -155,116 +155,121 @@ const checkerInterval = async (
 
   checkedProxys[_key] = _session === false ? [] : [..._session]
 
-  const _timeIds = Array(_stream).fill(1).map(async (_, index) => {
-    const timeId = createHash()
-    timeIds[timeId] = true
+  const _timeIds = await Promise.all(
+    Array(_stream).fill(1).map(async (_, index) => {
+      const timeId = createHash()
+      timeIds[timeId] = true
 
-    const instance = async (id, i_id) => {
-      if (timeIds[timeId] === false) {
-        fs.writeFileSync(session, JSON.stringify(_session))
-        return
-      }
-
-      const proxy = (() => {
-        let _proxy = random()
-
-        while (checkedProxys[_key].find(proxy => _proxy === proxy)) {
-          _proxy = random()
+      const instance = async (id, i_id) => {
+        if (timeIds[timeId] === false) {
+          _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Kill instance]')
+          return
         }
 
-        return _proxy
-      })()
+        const proxy = (() => {
+          let _proxy = random()
 
-      if (_isBrowser) {
-        try {
-          const browser = await puppeteer.launch({
-            headless: !_debugBrowser,
-            ignoreHTTPSErrors: true,
-            args: [`--proxy-server=${proxy}`],
-          })
+          while (checkedProxys[_key].find(proxy => _proxy === proxy)) {
+            _proxy = random()
+          }
 
-          setTimeout(() => {
-            try {
-              browser.close()
-            } catch (e) {}
-          }, timeout)
+          return _proxy
+        })()
 
+        if (_isBrowser) {
           try {
-            const page = await browser.newPage()
+            const browser = await puppeteer.launch({
+              headless: !_debugBrowser,
+              ignoreHTTPSErrors: true,
+              args: [`--proxy-server=${proxy}`],
+            })
 
-            await page.goto(_url)
-
-            if (!!await _indicators.find(async ({ selector }) => {
+            setTimeout(() => {
               try {
-                return await page.$(selector)
-              } catch (e) {
-                return null
+                browser.close()
+              } catch (e) {}
+            }, timeout)
+
+            try {
+              const page = await browser.newPage()
+
+              await page.goto(_url)
+
+              if (!!await _indicators.find(async ({ selector }) => {
+                try {
+                  return await page.$(selector)
+                } catch (e) {
+                  return null
+                }
+              })) {
+                _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load & parse] valid proxy: ' + proxy)
+                checkedProxys[_key].push(proxy)
+                if (_session !== false) {
+                  _session.push(proxy)
+                }
+                instance(id, i_id + 1)
+                browser.close()
+                return
               }
-            })) {
+
+              _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load] valid proxy: ' + proxy)
+            } catch (e) {
+              _debug && console.log('Stream: ' + id + ' [' + i_id +  '] [Not load] invalid proxy: ' + proxy)
+            }
+
+            browser.close()
+          } catch (e) {
+            _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Browser error] invalid proxy: ' + proxy)
+          }
+
+          instance(id, i_id + 1)
+        } else {
+          try {
+            const result = await new Promise(res => {
+              const _request = spawn('node', [__dirname + '/lib/request.js', _url, 'http://' + proxy, _timeout, JSON.stringify(_indicators.map(({ keyword }) => keyword))])
+              _request.stdout.on('data', data => res(`${data}`.trim()))
+            })
+
+            if (result === 'timeout') {
+              throw new Error()
+            }
+
+            if (result === 'true') {
               _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load & parse] valid proxy: ' + proxy)
               checkedProxys[_key].push(proxy)
               if (_session !== false) {
                 _session.push(proxy)
               }
-              instance(id, i_id + 1)
-              browser.close()
-              return
+              return instance(id, i_id + 1)
             }
 
             _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load] valid proxy: ' + proxy)
           } catch (e) {
-            _debug && console.log('Stream: ' + id + ' [' + i_id +  '] [Not load] invalid proxy: ' + proxy)
+            _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Not load] invalid proxy: ' + proxy)
           }
 
-          browser.close()
-        } catch (e) {
-          _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Browser error] invalid proxy: ' + proxy)
+          instance(id, i_id + 1)
         }
+      }
 
-        instance(id, i_id + 1)
-      } else {
-        try {
-          const result = await new Promise(res => {
-            const _request = spawn('node', [__dirname + '/lib/request.js', _url, 'http://' + proxy, _timeout, JSON.stringify(_indicators.map(({ keyword }) => keyword))])
-            _request.stdout.on('data', data => res(`${data}`.trim()))
-          })
-
-          if (result === 'timeout') {
-            throw new Error()
-          }
-
-          if (result === 'true') {
-            _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load & parse] valid proxy: ' + proxy)
-            checkedProxys[_key].push(proxy)
-            if (_session !== false) {
-              _session.push(proxy)
-            }
-            return instance(id, i_id + 1)
-          }
-
-          _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load] valid proxy: ' + proxy)
-        } catch (e) {
-          _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Not load] invalid proxy: ' + proxy)
+      for (;;) {
+        if (proxys.length > 0) {
+          setTimeout(instance, index * 2000, index, 0)
+          break
         }
-
-        instance(id, i_id + 1)
+        await delay(500)
       }
-    }
 
-    for (;;) {
-      if (proxys.length > 0) {
-        setTimeout(instance, index * 2000, index, 0)
-        break
-      }
-      await delay(500)
-    }
-
-    return timeId
-  })
+      return timeId
+    })
+  )
 
   return {
     key: _key,
-    kill: () => _timeIds.forEach(timeId => timeIds[timeId] = false),
+    kill: () => {
+      _timeIds.forEach(timeId => (timeIds[timeId] = false))
+      fs.writeFileSync(session, JSON.stringify(_session))
+    },
     save: () => fs.writeFileSync(session, JSON.stringify(_session))
   }
 }
