@@ -18,6 +18,10 @@ const filter = (proxys, { port }) => {
   return proxys
 }
 
+const quarantine = (proxys, proxy) =>
+  proxys.filter(_proxy => proxy !== _proxy)
+
+
 const load = async ({ port = false, debug = false } = { port: false, debug: false }) => {
   const new_proxys = []
 
@@ -124,7 +128,8 @@ const checkerInterval = async (
     stream = 2,
     debug = false,
     indicators = [],
-    session = false
+    session = false,
+    quarantineMode = true
   } = {
     url: null,
     isBrowser: false,
@@ -134,7 +139,8 @@ const checkerInterval = async (
     stream: 2,
     debug: false,
     indicators: [],
-    session: false
+    session: false,
+    quarantineMode: false
   }
 ) => {
   const _key               = key === null ? createHash() : key
@@ -145,6 +151,7 @@ const checkerInterval = async (
       , _timeout           = typeof(timeout) === 'number' ? timeout : 10000
       , _stream            = typeof(stream) === 'number' ? stream : 2
       , _debug             = typeof(debug) === 'boolean' ? debug : false
+      , _quarantineMode    = typeof(quarantineMode) === 'boolean' ? quarantineMode : false
       , _indicators        = indicators instanceof Array ? indicators : []
       , _session           = session
                                 ? (() => {
@@ -228,11 +235,17 @@ const checkerInterval = async (
 
               _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load] valid proxy: ' + proxy)
             } catch (e) {
+              if (_quarantineMode) {
+                proxys = quarantine(proxys, proxy)
+              }
               _debug && console.log('Stream: ' + id + ' [' + i_id +  '] [Not load] invalid proxy: ' + proxy)
             }
 
             browser.close()
           } catch (e) {
+            if (_quarantineMode) {
+              proxys = quarantine(proxys, proxy)
+            }
             _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Browser error] invalid proxy: ' + proxy)
           }
 
@@ -259,6 +272,9 @@ const checkerInterval = async (
 
             _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load] valid proxy: ' + proxy)
           } catch (e) {
+            if (_quarantineMode) {
+              proxys = quarantine(proxys, proxy)
+            }
             _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Not load] invalid proxy: ' + proxy)
           }
 

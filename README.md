@@ -160,6 +160,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | debug | boolean | false | нет | используется для отладки |
 | indicators | array | [] | нет | индикаторы правильно загруженных данных |
 | session | string | false | нет | путь для сохранения валидных IP после завершения или сохранения |
+| quarantineMode | boolean | false | нет | используется для переведения не рабочих прокси в карантин |
 
 ##### array[object]
 
@@ -511,6 +512,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | debug | boolean | false | none | used for debugging |
 | indicators | array | [] | none | indicators of correctly loaded data |
 | session | string | false | none | path to save valid IP addresses after completion or saving |
+| quarantineMode | boolean | false | none | used to quarantine non-working proxies |
 
 ##### array[object]
 
