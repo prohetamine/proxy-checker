@@ -8,11 +8,11 @@
 > proxy-checker - Максимально универсальный прокси-парсер и прокси-чекер.
 
 ### Почему ?
-Мне, а значит и многим необходимо [получать](#load) прокси для обхода бана по IP при большом количестве запросов. Этот модуль позволяет выполнять практически все задачи связанные с подготовкой прокси. Мне, а значит многим требуется собирать прокси индивидуально для некоторых сайтов, я также позаботился об [этом](#checkerInterval).
+Мне, а значит и многим необходимо [получать](#load) прокси для обхода бана по IP при большом количестве запросов. Этот модуль позволяет выполнять практически все задачи связанные с подготовкой прокси. Мне, а значит многим требуется собирать прокси индивидуально для некоторых сайтов, я также позаботился об [этом](#checkerInterval). Надеюсь мой вклад облегчит кому-то [жизнь](https://www.patreon.com/prohetamine)
 
 ### С чего начать
 
-Установим npm модуль  ```proxy-checker```
+Установим npm модуль  ```@prohetamine/proxy-checker```
 
 ```sh
 $ npm install @prohetamine/proxy-checker
@@ -35,6 +35,8 @@ const proxy = require('@prohetamine/proxy-checker')
 #### <a name="load">load</a>
 
 Функция [load](#load) собирает прокси и легко их отдает через [all](#all) и [random](#random)
+
+##### object
 
 | ключ | значение | значение по-умолчанию | обязательный | информация |
 | ------ | ------ | ------ | ------ | ------ |
@@ -92,9 +94,11 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="all">all</a>
+#### <a name="all">all</a>
 
 Функция [all](#all) возвращает массив IP адресов когда он загружен [load](#load) или [loadInterval](#loadInterval) и false когда загрузка еще не произошла.
+
+##### object
 
 | ключ | значение | значение по-умолчанию | обязательный | информация |
 | ------ | ------ | ------ | ------ | ------ |
@@ -112,9 +116,11 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="random">random</a>
+#### <a name="random">random</a>
 
 Функция [random](#random) возвращает один случайный IP адрес когда он загружен [load](#load) или [loadInterval](#loadInterval) и false когда загрузка еще не произошла.
+
+##### object
 
 | ключ | значение | значение по-умолчанию | обязательный | информация |
 | ------ | ------ | ------ | ------ | ------ |
@@ -233,7 +239,7 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="getall">get.all</a>
+#### <a name="getall">get.all</a>
 
 Функция [get.all](#getall) возвращает массив прочеканых [checkerInterval](#checkerInterval) IP адресов по уникальному идентификатору и false когда загрузка еще не произошла.
 
@@ -284,7 +290,7 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="getrandom">get.random</a>
+#### <a name="getrandom">get.random</a>
 
 Функция [get.random](#getrandom) возвращает один случайный из прочеканых [checkerInterval](#checkerInterval) IP адресов по уникальному идентификатору и false когда загрузка еще не произошла.
 
@@ -337,9 +343,11 @@ const proxy = require('@prohetamine/proxy-checker')
 
 Почта: prohetamine@gmail.com
 
+Донат денег: [patreon](https://www.patreon.com/prohetamine)
+
 Если у вас есть какие-либо вопросы и/или предложения, пожалуйста, напишите мне в телеграмме, если вы найдете ошибки также дайте мне знать, я буду очень благодарен.
 
--------- FOR WORLD --------
+-------- OTHER WORLD --------
 
 ##### lang: [ru](#rulang) [en](#enlang)
 
@@ -349,11 +357,11 @@ const proxy = require('@prohetamine/proxy-checker')
 > proxy-checker - The most versatile proxy parser and proxy checker.
 
 ### Why ?
-I, and therefore many people, need to [get](#load) a proxy to bypass the ban on IP with a large number of requests. This module allows you to perform almost all tasks related to proxy preparation. I, and therefore many people, need to build proxies individually for some sites, I also took care of [this](#checkerInterval).
+I, and therefore many people, need to [get](#load) a proxy to bypass the ban on IP with a large number of requests. This module allows you to perform almost all tasks related to proxy preparation. I, and therefore many people, need to build proxies individually for some sites, I also took care of [this](#checkerInterval). I hope my contribution will make it easier for someone [life](https://www.patreon.com/prohetamine)
 
 ### Get started
 
-Install the npm module  ```proxy-checker```
+Install the npm module  ```@prohetamine/proxy-checker```
 
 ```sh
 $ npm install @prohetamine/proxy-checker
@@ -376,6 +384,8 @@ const proxy = require('@prohetamine/proxy-checker')
 #### <a name="load">load</a>
 
 The [load](#load) function collects proxies and easily returns them via [all](#all) and [random](#random)
+
+##### object
 
 | key | value | default value | required | information|
 | ------ | ------ | ------ | ------ | ------ |
@@ -433,9 +443,11 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="all">all</a>
+#### <a name="all">all</a>
 
 The [all](#all) function returns an array of IP addresses when it is loaded [load](#load) or [loadInterval](#loadInterval) and false when the load has not yet occurred.
+
+##### object
 
 | key | value | default value | required | information|
 | ------ | ------ | ------ | ------ | ------ |
@@ -453,9 +465,11 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="random">random</a>
+#### <a name="random">random</a>
 
 The [random](#random) function returns a single random IP address when it is loaded [load](#load) or [loadInterval](#loadInterval) and false when the load has not yet occurred.
+
+##### object
 
 | key | value | default value | required | information|
 | ------ | ------ | ------ | ------ | ------ |
@@ -574,7 +588,7 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="getall">get.all</a>
+#### <a name="getall">get.all</a>
 
 The [get.all](#getall) function returns an array of checked [checkerInterval](#checkerInterval) IP addresses by a unique identifier and false when the download has not yet occurred.
 
@@ -625,7 +639,7 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-##### <a name="getrandom">get.random</a>
+#### <a name="getrandom">get.random</a>
 
 The function [get.random](#getrandom) returns one random of the checked [checkerInterval](#checkerInterval) IP addresses by a unique identifier and false when the download has not yet occurred.
 
@@ -678,5 +692,7 @@ const proxy = require('@prohetamine/proxy-checker')
 My Telegram: [@prohetamine](https://t.me/prohetamine), [channel](https://t.me/prohetamine)
 
 Email: prohetamine@gmail.com
+
+Donat money: [patreon](https://www.patreon.com/prohetamine)
 
 If you have any questions and/or suggestions, please email me in telegram, if you find any bugs also let me know, I will be very grateful.
