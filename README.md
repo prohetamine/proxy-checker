@@ -8,7 +8,7 @@
 > proxy-checker - Максимально универсальный прокси-парсер и прокси-чекер.
 
 ### Почему ?
-Мне, а значит и многим необходимо [получать](#load) прокси для обхода бана по IP при большом количестве запросов. Этот модуль позволяет выполнять практически все задачи связанные с подготовкой прокси. Мне, а значит многим требуется собирать прокси индивидуально для некоторых сайтов, я также позаботился об [этом](#checkerInterval). Надеюсь мой вклад облегчит кому-то [жизнь](https://www.patreon.com/prohetamine)
+Мне, а значит и многим необходимо [получать](#load) прокси для обхода бана по IP при большом количестве запросов. Этот модуль позволяет выполнять практически все задачи связанные с подготовкой прокси. Мне, а значит многим требуется собирать прокси индивидуально для некоторых сайтов, я также позаботился об [этом](#checkerInterval). Надеюсь мой вклад облегчит кому-то [жизнь](https://www.patreon.com/prohetamine).
 
 ### С чего начать
 
@@ -34,7 +34,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="load">load</a>
 
-Функция [load](#load) собирает прокси и легко их отдает через [all](#all) и [random](#random)
+Функция [load](#load) собирает прокси и легко их отдает через [all](#all) и [random](#random).
 
 ##### object
 
@@ -58,7 +58,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="loadInterval">loadInterval</a>
 
-Функция [load](#loadInterval) собирает прокси с интервалом в _N миллисекунд_ и легко их отдает через [all](#all) и [random](#random)
+Функция [load](#loadInterval) собирает прокси с интервалом в _N миллисекунд_ и легко их отдает через [all](#all) и [random](#random).
 
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
@@ -140,7 +140,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="checkerInterval">checkerInterval</a>
 
-Функция [checkerInterval](#checkerInterval) чекает прокси с интервалом в _N миллисекунд_ для определенного сайта и легко их отдает через [get.all](#getall) и [get.random](#getrandom)
+Функция [checkerInterval](#checkerInterval) чекает прокси с интервалом в _N миллисекунд_ для определенного сайта и легко их отдает через [get.all](#getall) и [get.random](#getrandom).
 
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
@@ -357,7 +357,7 @@ const proxy = require('@prohetamine/proxy-checker')
 > proxy-checker - The most versatile proxy parser and proxy checker.
 
 ### Why ?
-I, and therefore many people, need to [get](#load) a proxy to bypass the ban on IP with a large number of requests. This module allows you to perform almost all tasks related to proxy preparation. I, and therefore many people, need to build proxies individually for some sites, I also took care of [this](#checkerInterval). I hope my contribution will make it easier for someone [life](https://www.patreon.com/prohetamine)
+I, and therefore many people, need to [get](#load) a proxy to bypass the ban on IP with a large number of requests. This module allows you to perform almost all tasks related to proxy preparation. I, and therefore many people, need to build proxies individually for some sites, I also took care of [this](#checkerInterval). I hope my contribution will make it easier for someone [life](https://www.patreon.com/prohetamine).
 
 ### Get started
 
@@ -383,7 +383,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="load">load</a>
 
-The [load](#load) function collects proxies and easily returns them via [all](#all) and [random](#random)
+The [load](#load) function collects proxies and easily returns them via [all](#all) and [random](#random).
 
 ##### object
 
@@ -407,7 +407,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="loadInterval">loadInterval</a>
 
-The [load](#loadInterval) function collects proxies with an interval of _N milliseconds_ and easily returns them via [all](#all) and [random](#random)
+The [load](#loadInterval) function collects proxies with an interval of _N milliseconds_ and easily returns them via [all](#all) and [random](#random).
 
 | options | default | info |
 | ------ | ------ | ------ |
@@ -489,7 +489,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="checkerInterval">checkerInterval</a>
 
-The [checkerInterval](#checkerInterval) function checks proxies with an interval of _N milliseconds_ for a specific site and easily returns them via [get.all](#getall) and [get.random](#getrandom)
+The [checkerInterval](#checkerInterval) function checks proxies with an interval of _N milliseconds_ for a specific site and easily returns them via [get.all](#getall) and [get.random](#getrandom).
 
 | parameters | default value | information|
 | ------ | ------ | ------ |
