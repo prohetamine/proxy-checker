@@ -153,6 +153,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | ------ | ------ | ------ | ------ | ------ |
 | url | string | null | нет | ссылка на сайт |
 | isBrowser | boolean | false | нет | используется для проверки через браузер |
+| trashIgnore | boolean | false | нет | используется для оптимизации, убирает загрузку media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
 | debugBrowser | boolean | false | нет | используется для отладки выключает headless у puppeteer |
 | timeout | int | 10000 | нет | интервал в миллисекундах |
 | stream | int | 2 | нет | количество одновременных потоков |
@@ -178,6 +179,7 @@ const proxy = require('@prohetamine/proxy-checker')
   const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
+    trashIgnore: true,
     debugBrowser: false,
     timeout: 60000,
     stream: 10,
@@ -502,6 +504,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | ------ | ------ | ------ | ------ | ------ |
 | url | string | null | no | website link |
 | isBrowser | boolean | false | none | used for checking through the browser |
+| trashIgnore | boolean | false | none | used for optimization, removes loading of media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
 | debugBrowser | boolean | false | none | used for debugging disables headless in puppeteer |
 | timeout | int | 10000 | none | interval in milliseconds |
 | stream | int | 2 | none | number of concurrent threads |
@@ -527,6 +530,7 @@ const proxy = require('@prohetamine/proxy-checker')
   const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
+    trashIgnore: true,
     debugBrowser: false,
     timeout: 60000,
     stream: 10,

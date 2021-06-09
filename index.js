@@ -118,6 +118,7 @@ const checkerInterval = async (
   {
     url = null,
     isBrowser = false,
+    trashIgnore = false,
     debugBrowser = false,
     timeout = 10000,
     stream = 2,
@@ -127,6 +128,7 @@ const checkerInterval = async (
   } = {
     url: null,
     isBrowser: false,
+    trashIgnore: false,
     debugBrowser: false,
     timeout: 10000,
     stream: 2,
@@ -138,11 +140,12 @@ const checkerInterval = async (
   const _key               = key === null ? createHash() : key
       , _url               = url === null ? 'https://yandex.ru' : url
       , _isBrowser         = typeof(isBrowser) === 'boolean' ? isBrowser : false
+      , _trashIgnore       = typeof(trashIgnore) === 'boolean' ? trashIgnore : false
       , _debugBrowser      = typeof(debugBrowser) === 'boolean' ? debugBrowser : false
       , _timeout           = typeof(timeout) === 'number' ? timeout : 10000
       , _stream            = typeof(stream) === 'number' ? stream : 2
       , _debug             = typeof(debug) === 'boolean' ? debug : false
-      , _indicators       = indicators instanceof Array ? indicators : []
+      , _indicators        = indicators instanceof Array ? indicators : []
       , _session           = session
                                 ? (() => {
                                     try {
@@ -192,6 +195,17 @@ const checkerInterval = async (
 
             try {
               const page = await browser.newPage()
+
+              if (_trashIgnore) {
+                await page.setRequestInterception(true)
+                page.on('request', request => {
+                    if (['media', 'xhr', 'fetch', 'websocket', 'manifest', 'image', 'stylesheet', 'font', 'script'].indexOf(request.resourceType()) !== -1) {
+                        request.abort()
+                    } else {
+                        request.continue()
+                    }
+                })
+              }
 
               await page.goto(_url)
 
