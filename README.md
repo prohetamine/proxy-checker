@@ -336,6 +336,7 @@ const proxy = require('@prohetamine/proxy-checker')
   }, 3000)
 })()
 ```
+
 ### Другие примеры
 
 [больше...](/examples)
