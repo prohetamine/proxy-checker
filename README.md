@@ -58,7 +58,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="loadInterval">loadInterval</a>
 
-Функция [load](#loadInterval) собирает прокси с интервалом в _N миллисекунд_ и легко их отдает через [all](#all) и [random](#random).
+Функция [loadInterval](#loadInterval) собирает прокси с интервалом в _N миллисекунд_ и легко их отдает через [all](#all) и [random](#random).
 
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
@@ -410,7 +410,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
 #### <a name="loadInterval">loadInterval</a>
 
-The [load](#loadInterval) function collects proxies with an interval of _N milliseconds_ and easily returns them via [all](#all) and [random](#random).
+The [loadInterval](#loadInterval) function collects proxies with an interval of _N milliseconds_ and easily returns them via [all](#all) and [random](#random).
 
 | options | default | info |
 | ------ | ------ | ------ |
