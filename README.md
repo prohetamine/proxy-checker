@@ -145,7 +145,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
 | string | null | уникальный идентификатор |
-| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session } | дополнительные опции |
+| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session, onData } | дополнительные опции |
 
 ##### object
 
@@ -155,6 +155,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | isBrowser | boolean | false | нет | используется для проверки через браузер |
 | trashIgnore | boolean | false | нет | используется для оптимизации, убирает загрузку media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
 | browserConfig | object | { ... } | нет | используется для настройки лаунчера |
+| onData | function | () => { ... } | нет | используется для получения тела успешного запроса (рабоатает только для browser) |
 | timeout | int | 10000 | нет | интервал в миллисекундах |
 | stream | int | 2 | нет | количество одновременных потоков |
 | debug | boolean | false | нет | используется для отладки |
@@ -502,7 +503,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | parameters | default value | information|
 | ------ | ------ | ------ |
 | string | null | unique identifier |
-| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session} | additional options |
+| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session, onData } | additional options |
 
 ##### object
 
@@ -511,7 +512,8 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | url | string | null | no | website link |
 | isBrowser | boolean | false | none | used for checking through the browser |
 | trashIgnore | boolean | false | none | used for optimization, removes loading of media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
-| browserConfig | object | { ... } / no | used to configure the launcher |
+| browserConfig | object | { ... } | none | used to configure the launcher |
+| onData | function | () => { ... } | none | used to get the body of a successful request (works only for browser) |
 | timeout | int | 10000 | none | interval in milliseconds |
 | stream | int | 2 | none | number of concurrent threads |
 | debug | boolean | false | none | used for debugging |

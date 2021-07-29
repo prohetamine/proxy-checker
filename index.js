@@ -117,17 +117,20 @@ const loadInterval = async (
   return () => clearInterval(timeId)
 }
 
+const defaultBrowserConfig = proxy => ({
+  headless: true,
+  ignoreHTTPSErrors: true,
+  args: [`--proxy-server=${proxy}`],
+})
+
 const checkerInterval = async (
   key = null,
   {
     url = null,
     isBrowser = false,
     trashIgnore = false,
-    browserConfig = proxy => ({
-      headless: true,
-      ignoreHTTPSErrors: true,
-      args: [`--proxy-server=${proxy}`],
-    }),
+    browserConfig = false,
+    onData = false,
     timeout = 10000,
     stream = 2,
     debug = false,
@@ -138,13 +141,10 @@ const checkerInterval = async (
     url: null,
     isBrowser: false,
     trashIgnore: false,
-    browserConfig: proxy => ({
-      headless: true,
-      ignoreHTTPSErrors: true,
-      args: [`--proxy-server=${proxy}`],
-    }),
+    browserConfig: false,
     timeout: 10000,
     stream: 2,
+    onData: false,
     debug: false,
     indicators: [],
     session: false,
@@ -169,6 +169,8 @@ const checkerInterval = async (
                                     }
                                   })()
                                 : false
+      , _browserConfig     = browserConfig instanceof Object ? browserConfig : defaultBrowserConfig
+      , _onData            = typeof(onData) === 'boolean' ? (() => {}) : onData
 
   checkedProxys[_key] = _session === false ? [] : [..._session]
 
@@ -195,7 +197,7 @@ const checkerInterval = async (
 
         if (_isBrowser) {
           try {
-            const browser = await puppeteer.launch(browserConfig(proxy))
+            const browser = await puppeteer.launch(_browserConfig(proxy))
 
             setTimeout(() => {
               try {
@@ -228,6 +230,7 @@ const checkerInterval = async (
               })) {
                 _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load & parse] valid proxy: ' + proxy)
                 checkedProxys[_key].push(proxy)
+                _onData(await page.evaluate(`document.querySelector('*').outerHTML`))
                 if (_session !== false) {
                   _session.push(proxy)
                 }
@@ -267,6 +270,7 @@ const checkerInterval = async (
             if (result === 'true') {
               _debug && console.log('Stream: ' + id + ' [' + i_id + '] [Load & parse] valid proxy: ' + proxy)
               checkedProxys[_key].push(proxy)
+              _onData('/* todo */')
               if (_session !== false) {
                 _session.push(proxy)
               }
