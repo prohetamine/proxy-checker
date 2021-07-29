@@ -1,6 +1,6 @@
 const proxy = require('./../index.js')
 
-/* Automatic proxy parser and puppeteer checker */
+/* Automatic proxy parser and puppeteer checker for linux */
 
 ;(async () => {
   await proxy.loadInterval(count => {
@@ -12,6 +12,12 @@ const proxy = require('./../index.js')
   const { key, kill, save } = await proxy.checkerInterval(keyName, {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true, // Checking site access via puppeteer
+    browserConfig: proxy => ({
+      headless: true,
+      ignoreHTTPSErrors: true,
+      executablePath: '/usr/bin/chromium-browser', // your path
+      args: [`--proxy-server=${proxy}`, '--disable-web-security', '--no-sandbox', '--disable-setuid-sandbox'],
+    }),
     timeout: 60000,
     stream: 10, // The number of browsers running at the same time
     session: __dirname + '/chaturbate.json', // Saving the current session after kill or save with subsequent loading

@@ -123,7 +123,11 @@ const checkerInterval = async (
     url = null,
     isBrowser = false,
     trashIgnore = false,
-    debugBrowser = false,
+    browserConfig = proxy => ({
+      headless: true,
+      ignoreHTTPSErrors: true,
+      args: [`--proxy-server=${proxy}`],
+    }),
     timeout = 10000,
     stream = 2,
     debug = false,
@@ -134,7 +138,11 @@ const checkerInterval = async (
     url: null,
     isBrowser: false,
     trashIgnore: false,
-    debugBrowser: false,
+    browserConfig: proxy => ({
+      headless: true,
+      ignoreHTTPSErrors: true,
+      args: [`--proxy-server=${proxy}`],
+    }),
     timeout: 10000,
     stream: 2,
     debug: false,
@@ -147,7 +155,6 @@ const checkerInterval = async (
       , _url               = url === null ? 'https://yandex.ru' : url
       , _isBrowser         = typeof(isBrowser) === 'boolean' ? isBrowser : false
       , _trashIgnore       = typeof(trashIgnore) === 'boolean' ? trashIgnore : false
-      , _debugBrowser      = typeof(debugBrowser) === 'boolean' ? debugBrowser : false
       , _timeout           = typeof(timeout) === 'number' ? timeout : 10000
       , _stream            = typeof(stream) === 'number' ? stream : 2
       , _debug             = typeof(debug) === 'boolean' ? debug : false
@@ -188,11 +195,7 @@ const checkerInterval = async (
 
         if (_isBrowser) {
           try {
-            const browser = await puppeteer.launch({
-              headless: !_debugBrowser,
-              ignoreHTTPSErrors: true,
-              args: [`--proxy-server=${proxy}`],
-            })
+            const browser = await puppeteer.launch(browserConfig(proxy))
 
             setTimeout(() => {
               try {
@@ -306,7 +309,7 @@ const checkerInterval = async (
 
 const all = ({ port = false } = { port: false }) => {
   const array = filter(proxys, { port })
-  return array.length > 0 ? array : false
+  return array.length > 0 ? array : []
 }
 
 const random = ({ port = false } = { port: false }) => {
@@ -320,7 +323,7 @@ const get = (key = null) => ({
       throw new Error('not key name')
     }
     const array = filter(checkedProxys[key], { port })
-    return array.length > 0 ? array : false
+    return array.length > 0 ? array : []
   },
   random: ({ port = false } = { port: false }) => {
     if (key === null) {

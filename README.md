@@ -145,7 +145,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
 | string | null | уникальный идентификатор |
-| object | { url, isBrowser, debugBrowser, timeout, stream, debug, indicators, session } | дополнительные опции |
+| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session } | дополнительные опции |
 
 ##### object
 
@@ -154,7 +154,7 @@ const proxy = require('@prohetamine/proxy-checker')
 | url | string | null | нет | ссылка на сайт |
 | isBrowser | boolean | false | нет | используется для проверки через браузер |
 | trashIgnore | boolean | false | нет | используется для оптимизации, убирает загрузку media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
-| debugBrowser | boolean | false | нет | используется для отладки выключает headless у puppeteer |
+| browserConfig | object | { ... } | нет | используется для настройки лаунчера |
 | timeout | int | 10000 | нет | интервал в миллисекундах |
 | stream | int | 2 | нет | количество одновременных потоков |
 | debug | boolean | false | нет | используется для отладки |
@@ -181,7 +181,11 @@ const proxy = require('@prohetamine/proxy-checker')
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     trashIgnore: true,
-    debugBrowser: false,
+    browserConfig: proxy => ({
+      headless: true,
+      ignoreHTTPSErrors: true,
+      args: [`--proxy-server=${proxy}`],
+    }),
     timeout: 60000,
     stream: 10,
     session: __dirname + '/chaturbate.json',
@@ -195,7 +199,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // убивает текущий checkerInterval и сохраняет сессию
@@ -232,7 +236,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // убивает текущий checkerInterval и сохраняет сессию
@@ -283,7 +287,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // убивает текущий checkerInterval и сохраняет сессию
@@ -498,7 +502,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | parameters | default value | information|
 | ------ | ------ | ------ |
 | string | null | unique identifier |
-| object | { url, isBrowser, debugBrowser, timeout, stream, debug, indicators, session} | additional options |
+| object | { url, isBrowser, browserConfig, timeout, stream, debug, indicators, session} | additional options |
 
 ##### object
 
@@ -507,7 +511,7 @@ The [checkerInterval](#checkerInterval) function checks proxies with an interval
 | url | string | null | no | website link |
 | isBrowser | boolean | false | none | used for checking through the browser |
 | trashIgnore | boolean | false | none | used for optimization, removes loading of media, xhr, fetch, websocket, manifest, image, stylesheet, font, script |
-| debugBrowser | boolean | false | none | used for debugging disables headless in puppeteer |
+| browserConfig | object | { ... } / no | used to configure the launcher |
 | timeout | int | 10000 | none | interval in milliseconds |
 | stream | int | 2 | none | number of concurrent threads |
 | debug | boolean | false | none | used for debugging |
@@ -534,7 +538,11 @@ const proxy = require('@prohetamine/proxy-checker')
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     trashIgnore: true,
-    debugBrowser: false,
+    browserConfig: proxy => ({
+      headless: true,
+      ignoreHTTPSErrors: true,
+      args: [`--proxy-server=${proxy}`],
+    }),
     timeout: 60000,
     stream: 10,
     session: __dirname + '/chaturbate.json',
@@ -548,7 +556,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // Kills the current checkerInterval and saves the session
@@ -585,7 +593,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // Kills the current checkerInterval and saves the session
@@ -636,7 +644,7 @@ const proxy = require('@prohetamine/proxy-checker')
   setInterval(() => {
     const proxys = proxy.get(key).all()
     console.clear()
-    console.log(proxys, proxys && proxys.length)
+    console.log(proxys, proxys.length)
 
     if (proxys.length > 20) {
       kill() // Kills the current checkerInterval and saves the session
