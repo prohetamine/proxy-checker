@@ -9,7 +9,7 @@ const proxy = require('./../index.js')
 
   const keyName = 'chaturbate' // Name for accumulation
 
-  const { key, kill, save } = await proxy.checkerInterval(keyName, {
+  const { key, kill, save, clean } = await proxy.checkerInterval(keyName, {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true, // Checking site access via puppeteer
     browserConfig: proxy => ({

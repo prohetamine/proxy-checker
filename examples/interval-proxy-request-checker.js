@@ -9,7 +9,7 @@ const proxy = require('./../index.js')
 
   const keyName = null // Name for accumulation, if set to null, will be generated automatically
 
-  const { key, kill, save } = await proxy.checkerInterval(keyName, {
+  const { key, kill, save, clean } = await proxy.checkerInterval(keyName, {
     url: 'https://github.com/prohetamine',
     timeout: 30000,
     stream: 20, // The number of request running at the same time

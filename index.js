@@ -307,7 +307,11 @@ const checkerInterval = async (
       _timeIds.forEach(timeId => (timeIds[timeId] = false))
       fs.writeFileSync(session, JSON.stringify(_session))
     },
-    save: () => fs.writeFileSync(session, JSON.stringify(_session))
+    save: () => fs.writeFileSync(session, JSON.stringify(_session)),
+    clean: () => {
+      checkedProxys[_key] = []
+      fs.writeFileSync(session, JSON.stringify([]))
+    }
   }
 }
 

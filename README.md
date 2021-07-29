@@ -178,7 +178,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Количество собранных прокси
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     trashIgnore: true,
@@ -220,7 +220,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
   const keyName = null // Уникальный идентификатор для аккумуляции IP, если установлено значение null, будет сгенерировано автоматически
 
-  const { key, kill, save } = await proxy.checkerInterval(keyName, {
+  const { key, kill, save, clean } = await proxy.checkerInterval(keyName, {
     url: 'https://github.com/prohetamine',
     timeout: 30000,
     stream: 20,
@@ -271,7 +271,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Количество собранных прокси
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     debugBrowser: false,
@@ -322,7 +322,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Количество собранных прокси
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     debugBrowser: false,
@@ -536,7 +536,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Number of collected proxies
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     trashIgnore: true,
@@ -578,7 +578,7 @@ const proxy = require('@prohetamine/proxy-checker')
 
   const keyName = null // A unique identifier for IP accumulation, if set to null, will be generated automatically.
 
-  const { key, kill, save } = await proxy.checkerInterval(keyName, {
+  const { key, kill, save, clean } = await proxy.checkerInterval(keyName, {
     url: 'https://github.com/prohetamine',
     timeout: 30000,
     stream: 20,
@@ -629,7 +629,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Number of collected proxies
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     debugBrowser: false,
@@ -680,7 +680,7 @@ const proxy = require('@prohetamine/proxy-checker')
     console.log(`count parse: ${count}`) // Number of collected proxies
   }, 60000, { started: true, debug: false })
 
-  const { key, kill, save } = await proxy.checkerInterval('chaturbate', {
+  const { key, kill, save, clean } = await proxy.checkerInterval('chaturbate', {
     url: 'https://chaturbate.com/diana_smiley/',
     isBrowser: true,
     debugBrowser: false,
