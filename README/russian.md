@@ -342,7 +342,7 @@ const proxy = require('@prohetamine/proxy-checker')
 })()
 ```
 
-Другие примеры из этого проекта можно найти тут: [examples](https://github.com/prohetamine/proxy-checker/blob/main/examples)
+Другие примеры из этого проекта можно найти тут: [примеры](https://github.com/prohetamine/proxy-checker/blob/main/examples)
 
 ### Контакты
 
