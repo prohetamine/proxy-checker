@@ -3,7 +3,7 @@
 ##### README is available in the following languages: [Russian](https://github.com/prohetamine/proxy-checker/blob/main/README/russian.md) | [English](https://github.com/prohetamine/proxy-checker/blob/main/README.md)
 
 
-# proxy-checker
+# Proxy Checker
 
 > proxy-checker - The most versatile proxy parser and proxy checker.
 
