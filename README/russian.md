@@ -3,7 +3,7 @@
 ##### README доступен на языках: [Русский](https://github.com/prohetamine/proxy-checker/blob/main/README/russian.md) | [Английский](https://github.com/prohetamine/proxy-checker/blob/main/README.md)
 
 
-# proxy-checker
+# Proxy Checker
 
 > proxy-checker - Максимально универсальный прокси-парсер и прокси-чекер.
 
